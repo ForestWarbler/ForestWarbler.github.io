@@ -4,11 +4,11 @@ const CONTENT_SECTIONS = ["site", "profile", "research", "publications", "miscel
 const LANGUAGE_KEY = "homepage-language";
 const THEME_KEY = "homepage-theme";
 let content;
-let language = "zh";
+let language = "en";
 let theme = document.documentElement.dataset.theme === "night" ? "night" : "day";
 
 try {
-  if (localStorage.getItem(LANGUAGE_KEY) === "en") language = "en";
+  if (localStorage.getItem(LANGUAGE_KEY) === "zh") language = "zh";
 } catch {
   // Language switching still works if browser storage is unavailable.
 }
