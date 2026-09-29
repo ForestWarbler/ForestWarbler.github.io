@@ -1,11 +1,25 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="day">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
     <meta name="color-scheme" content="light" />
-    <title>学术主页 · Academic homepage</title>
+    <meta name="theme-color" content="#ca9358" />
+    <script>
+      (() => {
+        try {
+          if (localStorage.getItem("homepage-theme") !== "night") return;
+          document.documentElement.dataset.theme = "night";
+          document.documentElement.style.colorScheme = "dark";
+          document.querySelector('meta[name="color-scheme"]').content = "dark";
+          document.querySelector('meta[name="theme-color"]').content = "#25243d";
+        } catch {
+          // Keep the default day theme when storage is unavailable.
+        }
+      })();
+    </script>
+    <title>ForestWarbler in the Afterglow</title>
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./assets/styles.css" />
     <script src="./assets/main.js" defer></script>
@@ -23,54 +37,154 @@
 
     <div id="page" hidden>
       <a id="skip-link" class="skip-link" href="#main"></a>
-      <header class="site-header container">
-        <a id="brand" class="brand" href="./"></a>
-        <nav id="navigation">
-          <a id="nav-profile" href="#profile"></a>
-          <a id="nav-research" href="#research"></a>
-          <a id="nav-publications" href="#publications"></a>
-          <a id="nav-miscellaneous" href="#miscellaneous"></a>
-        </nav>
-        <button id="language-toggle" class="language-toggle" type="button"></button>
-      </header>
-
-      <main id="main" class="container" tabindex="-1">
-        <section id="profile" class="profile" aria-labelledby="profile-name">
-          <div>
-            <h1 id="profile-name"></h1>
-            <p id="profile-affiliation" class="affiliation"></p>
-            <div id="profile-paragraphs" class="prose"></div>
+      <div class="container">
+        <header class="site-header">
+          <a id="brand" class="brand" href="./" aria-label="ForestWarbler in the Afterglow">
+            <svg class="wordmark" xmlns="http://www.w3.org/2000/svg" viewBox="2.6 0 1200 110" aria-hidden="true" focusable="false">
+              <!-- Original broad-pen italic outlines; one shared baseline and slant, no font dependency. -->
+              <defs>
+                <g id="letter-F">
+                  <path d="M8 39C-2 35-3 19 7 9C17-1 35 7 48 4C53 3 57 1 59-4C58 4 52 10 43 11C29 12 19 6 11 11C1 16 1 32 8 39Z"/>
+                  <path d="M24 12L30 10L30 55C30 70 33 84 23 91C15 97 4 95 0 87L1 84C5 91 13 94 20 87C28 78 22 68 23 55Z"/>
+                  <path d="M14 40C22 34 37 36 45 31L44 36C35 38 24 37 14 42Z"/>
+                </g>
+                <g id="letter-o">
+                  <path d="M16 30C7 30 2 40 2 53C2 64 6 72 15 72C24 72 29 61 29 48C29 37 25 30 16 30Z M17 32C24 32 24 42 23 52C22 63 18 70 14 70C7 70 7 60 8 50C9 39 12 32 17 32Z"/>
+                </g>
+                <g id="letter-r">
+                  <path d="M1 38L1 36L11 30L13 32L12 42C17 32 23 27 29 32L25 39C19 34 16 38 12 47L12 70L6 72L6 40Q6 35 1 38Z"/>
+                </g>
+                <g id="letter-e">
+                  <path d="M26 58C22 65 17 69 12 68C6 67 6 57 8 48C19 47 29 43 28 36C27 26 12 28 6 37C0 45 0 60 5 68C11 77 23 71 28 59Z M9 45C12 33 19 28 22 34C25 40 16 44 9 45Z"/>
+                </g>
+                <g id="letter-s">
+                  <path d="M26 34L23 41C23 34 18 31 13 33C7 35 11 42 18 48C27 55 28 65 19 70C11 75 3 71 0 67L3 60C5 68 11 71 17 68C24 64 17 57 10 51C-1 42 3 31 14 30C19 29 23 31 26 34Z"/>
+                </g>
+                <g id="letter-t">
+                  <path d="M10 22L16 17L16 31L27 31L26 34L16 34L16 61C16 70 22 65 27 61L28 63C21 72 10 77 10 65L10 34L2 34L3 31L10 31Z"/>
+                </g>
+                <g id="letter-W">
+                  <path d="M0 13C6 6 14 5 17 10C20 17 18 39 20 64L34 13L40 10L46 65C51 50 58 32 58 20C58 13 55 12 51 14L50 12C58 6 65 10 63 22C60 38 52 57 46 72L41 72L35 24L22 72L17 72L11 16Q10 9 1 15Z"/>
+                </g>
+                <g id="letter-a">
+                  <path d="M16 30C7 30 2 40 2 53C2 64 6 72 15 72C24 72 29 61 29 48C29 37 25 30 16 30Z M17 32C24 32 24 42 23 52C22 63 18 70 14 70C7 70 7 60 8 50C9 39 12 32 17 32Z"/>
+                  <path d="M27 32L33 29L33 62Q33 69 39 63L40 65Q33 74 29 71Q27 69 27 63Z"/>
+                </g>
+                <g id="letter-b">
+                  <path d="M2 15L2 13L13 7L14 9L13 38C20 25 34 29 34 45C34 62 24 75 13 72L7 70L7 19Q7 12 2 15Z M13 44L13 65C13 74 27 66 28 50C30 32 22 29 13 44Z"/>
+                </g>
+                <g id="letter-l">
+                  <path d="M2 15L2 13L13 7L14 9L14 62Q14 70 20 63L23 61L24 63Q16 75 11 71Q8 69 8 63L8 19Q8 12 2 15Z"/>
+                </g>
+                <g id="letter-i">
+                  <path d="M1 38L1 36L11 30L14 31L14 61Q14 69 20 63L22 64Q15 75 10 71Q7 69 7 64L7 40Q7 34 1 38Z"/>
+                  <path d="M11 16L15 20L11 25L7 21Z"/>
+                </g>
+                <g id="letter-n">
+                  <path d="M2 37L2 35L11 30L13 32L12 40C18 28 33 25 33 39L33 62Q33 68 38 63L40 65Q32 74 29 70Q27 68 27 63L27 40C27 31 18 34 12 46L12 70L6 72L6 40Q6 34 2 37Z"/>
+                </g>
+                <g id="letter-h">
+                  <path d="M2 15L2 13L13 7L14 9L13 39C19 28 33 25 33 39L33 62Q33 68 38 63L40 65Q32 74 29 70Q27 68 27 63L27 40C27 31 19 34 13 46L13 70L7 72L7 19Q7 12 2 15Z"/>
+                </g>
+                <g id="letter-A">
+                  <path d="M-4 70L0 68L26 12C29 6 35 4 38 7L43 62Q44 70 51 65L52 67Q43 75 39 71Q37 69 36 63L34 47L11 47L3 65Q1 70 8 68L8 70Z M12 44L34 44L30 13Z"/>
+                </g>
+                <g id="letter-f">
+                  <path d="M3 34L4 31L11 31L11 21C11 7 21 3 31 9L27 15C23 9 17 9 17 20L17 31L29 31L28 34L17 34L17 77C17 90 10 98 0 93L3 86C8 94 11 88 11 78L11 34Z"/>
+                </g>
+                <g id="letter-g">
+                  <path d="M16 30C7 30 2 40 2 53C2 64 6 72 15 72C24 72 29 61 29 48C29 37 25 30 16 30Z M17 32C24 32 24 42 23 52C22 63 18 70 14 70C7 70 7 60 8 50C9 39 12 32 17 32Z"/>
+                  <path d="M27 32L33 29L33 73C33 91 16 100 7 91L10 86C18 94 27 85 27 73L27 59Z"/>
+                </g>
+                <g id="letter-w">
+                  <path d="M1 37L1 35L10 30L13 32L14 64L25 32L30 30L33 64C39 49 43 34 39 34L38 32C45 26 49 31 47 38C44 50 38 65 33 72L29 72L25 42L15 71L10 73L7 40Q7 34 1 37Z"/>
+                </g>
+              </defs>
+              <g fill="currentColor" fill-rule="evenodd" transform="matrix(1.15 0 -.2 1 20 8)">
+                  <use href="#letter-F" x="0"/>
+                  <use href="#letter-o" x="40"/>
+                  <use href="#letter-r" x="72"/>
+                  <use href="#letter-e" x="100"/>
+                  <use href="#letter-s" x="130"/>
+                  <use href="#letter-t" x="159"/>
+                  <use href="#letter-W" x="188"/>
+                  <use href="#letter-a" x="251"/>
+                  <use href="#letter-r" x="291"/>
+                  <use href="#letter-b" x="319"/>
+                  <use href="#letter-l" x="354"/>
+                  <use href="#letter-e" x="378"/>
+                  <use href="#letter-r" x="408"/>
+                  <use href="#letter-i" x="458"/>
+                  <use href="#letter-n" x="481"/>
+                  <use href="#letter-t" x="543"/>
+                  <use href="#letter-h" x="572"/>
+                  <use href="#letter-e" x="612"/>
+                  <use href="#letter-A" x="664"/>
+                  <use href="#letter-f" x="715"/>
+                  <use href="#letter-t" x="744"/>
+                  <use href="#letter-e" x="773"/>
+                  <use href="#letter-r" x="803"/>
+                <g class="brand-glow">
+                    <use href="#letter-g" x="831"/>
+                    <use href="#letter-l" x="868"/>
+                    <use href="#letter-o" x="892"/>
+                    <use href="#letter-w" x="924"/>
+                </g>
+              </g>
+            </svg>
+          </a>
+          <nav id="navigation">
+            <a id="nav-profile" href="#profile"></a>
+            <a id="nav-research" href="#research"></a>
+            <a id="nav-publications" href="#publications"></a>
+            <a id="nav-miscellaneous" href="#miscellaneous"></a>
+          </nav>
+          <div class="header-controls">
+            <button id="language-toggle" class="header-button language-toggle" type="button"></button>
+            <button id="theme-toggle" class="header-button theme-toggle" type="button" aria-pressed="false"></button>
           </div>
-          <aside class="contact" aria-labelledby="contact-title">
-            <h2 id="contact-title"></h2>
-            <div id="contact-details" class="prose"></div>
-            <ul id="contact-links" class="contact-links" role="list"></ul>
-          </aside>
-        </section>
+        </header>
 
-        <section id="research" class="section" aria-labelledby="research-title">
-          <h2 id="research-title"></h2>
-          <div id="research-paragraphs" class="prose"></div>
-          <ul id="research-interests" class="research-interests"></ul>
-        </section>
+        <main id="main" tabindex="-1">
+          <section id="profile" class="profile" aria-labelledby="profile-name">
+            <div class="profile-heading">
+              <h1 id="profile-name"></h1>
+              <p id="profile-affiliation" class="affiliation"></p>
+            </div>
+            <div id="profile-paragraphs" class="prose profile-bio"></div>
+            <div class="profile-sidebar">
+              <img id="profile-photo" class="profile-photo" src="./content/profile.png" alt="" width="2048" height="2048" decoding="async" />
+              <aside class="contact" aria-labelledby="contact-title">
+                <h2 id="contact-title"></h2>
+                <div id="contact-details" class="prose"></div>
+                <ul id="contact-links" class="contact-links" role="list"></ul>
+              </aside>
+            </div>
+          </section>
 
-        <section id="publications" class="section" aria-labelledby="publications-title">
-          <h2 id="publications-title"></h2>
-          <p id="publications-description" class="section-description"></p>
-          <ol id="publication-list" class="publication-list" role="list"></ol>
-        </section>
+          <section id="research" class="section" aria-labelledby="research-title">
+            <h2 id="research-title" class="section-heading"></h2>
+            <div id="research-paragraphs" class="prose"></div>
+            <ul id="research-interests" class="research-interests"></ul>
+          </section>
 
-        <section id="miscellaneous" class="section" aria-labelledby="miscellaneous-title">
-          <h2 id="miscellaneous-title"></h2>
-          <div id="miscellaneous-paragraphs" class="prose"></div>
-          <ul id="miscellaneous-links" class="inline-links" role="list"></ul>
-        </section>
-      </main>
+          <section id="publications" class="section" aria-labelledby="publications-title">
+            <h2 id="publications-title" class="section-heading"></h2>
+            <p id="publications-description" class="section-description"></p>
+            <ol id="publication-list" class="publication-list" role="list"></ol>
+          </section>
 
-      <footer class="site-footer container">
-        <p id="footer"></p>
-        <a class="back-to-top" href="#main" id="back-to-top"></a>
-      </footer>
+          <section id="miscellaneous" class="section" aria-labelledby="miscellaneous-title">
+            <h2 id="miscellaneous-title" class="section-heading"></h2>
+            <div id="miscellaneous-paragraphs" class="prose"></div>
+            <ul id="miscellaneous-links" class="inline-links" role="list"></ul>
+          </section>
+        </main>
+        <footer class="site-footer">
+          <p id="footer"></p>
+          <a class="back-to-top" href="#main" id="back-to-top"></a>
+        </footer>
+      </div>
     </div>
   </body>
 </html>

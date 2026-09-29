@@ -1,22 +1,30 @@
 {
   "zh": {
-    "title": "ForestWarbler · 学术主页",
+    "title": "ForestWarbler in the Afterglow · 学术主页",
     "description": "ForestWarbler 的学术主页：个人介绍、研究方向、论文发表与其他信息。",
-    "brand": "ForestWarbler",
+    "brand": "ForestWarbler in the Afterglow",
     "navigationLabel": "主导航",
-    "languageButtonText": "English",
-    "languageButtonLabel": "Switch to English",
+    "languageButtonText": "中文",
+    "languageButtonLabel": "当前语言为中文，点击切换到英文",
+    "themeButtons": {
+      "day": { "text": "日间", "label": "当前为日间模式，点击切换到夜间模式" },
+      "night": { "text": "夜间", "label": "当前为夜间模式，点击切换到日间模式" }
+    },
     "skipLink": "跳到正文",
     "backToTop": "回到顶部 ↑",
     "footer": "© ForestWarbler"
   },
   "en": {
-    "title": "ForestWarbler · Academic homepage",
+    "title": "ForestWarbler in the Afterglow · Academic homepage",
     "description": "ForestWarbler's academic homepage: biography, research, publications, and other information.",
-    "brand": "ForestWarbler",
+    "brand": "ForestWarbler in the Afterglow",
     "navigationLabel": "Main navigation",
-    "languageButtonText": "中文",
-    "languageButtonLabel": "切换到中文",
+    "languageButtonText": "English",
+    "languageButtonLabel": "Current language: English. Switch to Chinese.",
+    "themeButtons": {
+      "day": { "text": "Day", "label": "Current mode: Day. Switch to night mode." },
+      "night": { "text": "Night", "label": "Current mode: Night. Switch to day mode." }
+    },
     "skipLink": "Skip to content",
     "backToTop": "Back to top ↑",
     "footer": "© ForestWarbler"

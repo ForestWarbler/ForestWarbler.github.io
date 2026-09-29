@@ -2,24 +2,24 @@
   "zh": {
     "title": "研究方向",
     "paragraphs": [
-      "在这里概括你关注的研究问题。"
+      "我的研究兴趣是构建实用、高效且可扩展的机器学习系统（MLSys）。我主要关注算法与系统的协同设计，以及大语言模型（LLM）与智能体（Agent）系统。"
     ],
     "interests": [
       {
-        "name": "研究方向（请替换）",
-        "description": "简要说明具体问题、研究方法或目标。"
+        "name": "高效 LLM 与 Agent 系统",
+        "description": "探索如何提升多智能体系统的并发能力，并高效管理智能体的上下文。"
       }
     ]
   },
   "en": {
     "title": "Research",
     "paragraphs": [
-      "Summarize the research questions that interest you here."
+      "I am interested in building practical, efficient, and scalable machine learning systems (MLSys). My work focuses on algorithm–system co-design and systems for large language models (LLMs) and agents."
     ],
     "interests": [
       {
-        "name": "Research area (please replace)",
-        "description": "Briefly describe the questions, methods, or goals."
+        "name": "Efficient LLM and Agent Systems",
+        "description": "Exploring how to improve concurrency in multi-agent systems and manage agent context efficiently."
       }
     ]
   }

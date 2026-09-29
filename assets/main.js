@@ -2,8 +2,10 @@
 
 const CONTENT_SECTIONS = ["site", "profile", "research", "publications", "miscellaneous"];
 const LANGUAGE_KEY = "homepage-language";
+const THEME_KEY = "homepage-theme";
 let content;
 let language = "zh";
+let theme = document.documentElement.dataset.theme === "night" ? "night" : "day";
 
 try {
   if (localStorage.getItem(LANGUAGE_KEY) === "en") language = "en";
@@ -50,6 +52,20 @@ function renderLinks(container, links) {
   container.hidden = links.length === 0;
 }
 
+function renderTheme() {
+  const night = theme === "night";
+  document.documentElement.dataset.theme = theme;
+  document.documentElement.style.colorScheme = night ? "dark" : "light";
+  document.querySelector('meta[name="color-scheme"]').content = night ? "dark" : "light";
+  document.querySelector('meta[name="theme-color"]').content = night ? "#25243d" : "#ca9358";
+
+  const button = element("theme-toggle");
+  const labels = content.site[language].themeButtons[theme];
+  button.textContent = labels.text;
+  button.setAttribute("aria-label", labels.label);
+  button.setAttribute("aria-pressed", String(night));
+}
+
 function render() {
   const { site, profile, research, publications, miscellaneous } = Object.fromEntries(
     CONTENT_SECTIONS.map((section) => [section, content[section][language]]),
@@ -58,8 +74,9 @@ function render() {
   document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
   document.title = site.title;
   document.querySelector('meta[name="description"]').content = site.description;
+  element("brand").setAttribute("aria-label", site.brand);
   for (const [id, key] of Object.entries({
-    brand: "brand", "skip-link": "skipLink", footer: "footer", "back-to-top": "backToTop",
+    "skip-link": "skipLink", footer: "footer", "back-to-top": "backToTop",
   })) {
     setText(id, site[key]);
   }
@@ -67,11 +84,18 @@ function render() {
 
   const toggle = element("language-toggle");
   toggle.textContent = site.languageButtonText;
-  toggle.lang = language === "zh" ? "en" : "zh-CN";
+  toggle.lang = document.documentElement.lang;
   toggle.setAttribute("aria-label", site.languageButtonLabel);
+  renderTheme();
 
   setText("nav-profile", profile.title);
-  setText("profile-name", profile.name);
+  const nameParts = profile.name.match(/^(.+?)\s*([（(].+[）)])$/);
+  const nameHeading = element("profile-name");
+  nameHeading.replaceChildren(createElement("span", "name-primary", nameParts ? nameParts[1] : profile.name));
+  if (nameParts) {
+    nameHeading.append(document.createTextNode(" "), createElement("span", "name-secondary", nameParts[2]));
+  }
+  element("profile-photo").alt = profile.name;
   setText("profile-affiliation", profile.affiliation);
   element("profile-affiliation").hidden = !profile.affiliation;
   renderParagraphs("profile-paragraphs", profile.paragraphs);
@@ -98,21 +122,22 @@ function render() {
   setText("publications-description", publications.description);
   element("publications-description").hidden = !publications.description;
   element("publication-list").replaceChildren(
-    ...publications.items.map((publication) => {
+    ...content.publications.items.map((publication) => {
       const item = createElement("li", "publication");
       const details = createElement("div", "publication-details");
       details.append(createElement("h3", "", publication.title));
       if (publication.authors) {
         details.append(createElement("p", "publication-authors", publication.authors));
       }
-      if (publication.venue) {
-        details.append(createElement("p", "publication-venue", publication.venue));
+      const venueAndYear = [publication.venue, publication.year].filter(Boolean).join(", ");
+      if (venueAndYear) {
+        details.append(createElement("p", "publication-venue", venueAndYear));
       }
       const links = createElement("ul", "inline-links publication-links");
       links.setAttribute("role", "list");
       renderLinks(links, publication.links);
       details.append(links);
-      item.append(createElement("span", "publication-year", publication.year), details);
+      item.append(details);
       return item;
     }),
   );
@@ -128,6 +153,16 @@ element("language-toggle").addEventListener("click", () => {
     localStorage.setItem(LANGUAGE_KEY, language);
   } catch {
     // Keep the selected language for this visit when storage is disabled.
+  }
+});
+
+element("theme-toggle").addEventListener("click", () => {
+  theme = theme === "day" ? "night" : "day";
+  renderTheme();
+  try {
+    localStorage.setItem(THEME_KEY, theme);
+  } catch {
+    // Keep the selected theme for this visit when storage is unavailable.
   }
 });
 

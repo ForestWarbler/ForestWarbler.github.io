@@ -1,28 +1,26 @@
 {
   "zh": {
     "title": "论文发表",
-    "description": "",
-    "items": [
-      {
-        "title": "示例论文标题（请替换）",
-        "authors": "作者一，作者二，作者三",
-        "venue": "会议或期刊名称（请替换）",
-        "year": "年份",
-        "links": []
-      }
-    ]
+    "description": ""
   },
   "en": {
     "title": "Publications",
-    "description": "",
-    "items": [
-      {
-        "title": "Example paper title (please replace)",
-        "authors": "Author One, Author Two, Author Three",
-        "venue": "Conference or journal name (please replace)",
-        "year": "Year",
-        "links": []
-      }
-    ]
-  }
+    "description": ""
+  },
+  "items": [
+    {
+      "title": "Operator-Level Acceleration for Sparse 3D Object Detection",
+      "authors": "Hongjin Zhong*, Jingyu Guo*, Mingyue Cui†, Shuai Liu, Yuanhai Zhang, Kai Huang",
+      "venue": "Design Automation Conference",
+      "year": "2026",
+      "links": []
+    },
+    {
+      "title": "Star-LAFT: An Agent-Driven Adaptive Framework for Fault-Tolerant High-Throughput Materials Informatics",
+      "authors": "Pin Chen, Hongjin Zhong, Guixin Guo, Jiang Li, Yuewen Huang, and Yutong Lu*",
+      "venue": "The International Conference for High Performance Computing, Networking, Storage and Analysis",
+      "year": "2026",
+      "links": []
+    }
+  ]
 }
