@@ -1,0 +1,26 @@
+{
+  "zh": {
+    "title": "研究方向",
+    "paragraphs": [
+      "在这里概括你关注的研究问题。"
+    ],
+    "interests": [
+      {
+        "name": "研究方向（请替换）",
+        "description": "简要说明具体问题、研究方法或目标。"
+      }
+    ]
+  },
+  "en": {
+    "title": "Research",
+    "paragraphs": [
+      "Summarize the research questions that interest you here."
+    ],
+    "interests": [
+      {
+        "name": "Research area (please replace)",
+        "description": "Briefly describe the questions, methods, or goals."
+      }
+    ]
+  }
+}

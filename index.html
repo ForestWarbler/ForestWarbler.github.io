@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="color-scheme" content="light" />
+    <title>学术主页 · Academic homepage</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./assets/main.js" defer></script>
+    <noscript><style>#loading { display: none; }</style></noscript>
+  </head>
+  <body>
+    <div id="loading" class="loading" role="status">正在加载 / Loading…</div>
+    <div id="load-error" class="loading" role="alert" hidden>
+      <p>内容加载失败，请刷新重试。</p>
+      <p>Could not load the content. Please refresh to try again.</p>
+    </div>
+    <noscript>
+      <p class="loading">请启用 JavaScript 查看主页。<br />Please enable JavaScript to view this page.</p>
+    </noscript>
+
+    <div id="page" hidden>
+      <a id="skip-link" class="skip-link" href="#main"></a>
+      <header class="site-header container">
+        <a id="brand" class="brand" href="./"></a>
+        <nav id="navigation">
+          <a id="nav-profile" href="#profile"></a>
+          <a id="nav-research" href="#research"></a>
+          <a id="nav-publications" href="#publications"></a>
+          <a id="nav-miscellaneous" href="#miscellaneous"></a>
+        </nav>
+        <button id="language-toggle" class="language-toggle" type="button"></button>
+      </header>
+
+      <main id="main" class="container" tabindex="-1">
+        <section id="profile" class="profile" aria-labelledby="profile-name">
+          <div>
+            <h1 id="profile-name"></h1>
+            <p id="profile-affiliation" class="affiliation"></p>
+            <div id="profile-paragraphs" class="prose"></div>
+          </div>
+          <aside class="contact" aria-labelledby="contact-title">
+            <h2 id="contact-title"></h2>
+            <div id="contact-details" class="prose"></div>
+            <ul id="contact-links" class="contact-links" role="list"></ul>
+          </aside>
+        </section>
+
+        <section id="research" class="section" aria-labelledby="research-title">
+          <h2 id="research-title"></h2>
+          <div id="research-paragraphs" class="prose"></div>
+          <ul id="research-interests" class="research-interests"></ul>
+        </section>
+
+        <section id="publications" class="section" aria-labelledby="publications-title">
+          <h2 id="publications-title"></h2>
+          <p id="publications-description" class="section-description"></p>
+          <ol id="publication-list" class="publication-list" role="list"></ol>
+        </section>
+
+        <section id="miscellaneous" class="section" aria-labelledby="miscellaneous-title">
+          <h2 id="miscellaneous-title"></h2>
+          <div id="miscellaneous-paragraphs" class="prose"></div>
+          <ul id="miscellaneous-links" class="inline-links" role="list"></ul>
+        </section>
+      </main>
+
+      <footer class="site-footer container">
+        <p id="footer"></p>
+        <a class="back-to-top" href="#main" id="back-to-top"></a>
+      </footer>
+    </div>
+  </body>
+</html>

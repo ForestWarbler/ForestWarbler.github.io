@@ -1,0 +1,28 @@
+{
+  "zh": {
+    "title": "论文发表",
+    "description": "",
+    "items": [
+      {
+        "title": "示例论文标题（请替换）",
+        "authors": "作者一，作者二，作者三",
+        "venue": "会议或期刊名称（请替换）",
+        "year": "年份",
+        "links": []
+      }
+    ]
+  },
+  "en": {
+    "title": "Publications",
+    "description": "",
+    "items": [
+      {
+        "title": "Example paper title (please replace)",
+        "authors": "Author One, Author Two, Author Three",
+        "venue": "Conference or journal name (please replace)",
+        "year": "Year",
+        "links": []
+      }
+    ]
+  }
+}

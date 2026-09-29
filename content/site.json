@@ -1,0 +1,24 @@
+{
+  "zh": {
+    "title": "ForestWarbler · 学术主页",
+    "description": "ForestWarbler 的学术主页：个人介绍、研究方向、论文发表与其他信息。",
+    "brand": "ForestWarbler",
+    "navigationLabel": "主导航",
+    "languageButtonText": "English",
+    "languageButtonLabel": "Switch to English",
+    "skipLink": "跳到正文",
+    "backToTop": "回到顶部 ↑",
+    "footer": "© ForestWarbler"
+  },
+  "en": {
+    "title": "ForestWarbler · Academic homepage",
+    "description": "ForestWarbler's academic homepage: biography, research, publications, and other information.",
+    "brand": "ForestWarbler",
+    "navigationLabel": "Main navigation",
+    "languageButtonText": "中文",
+    "languageButtonLabel": "切换到中文",
+    "skipLink": "Skip to content",
+    "backToTop": "Back to top ↑",
+    "footer": "© ForestWarbler"
+  }
+}
