@@ -1,6 +1,12 @@
 "use strict";
 
-const CONTENT_SECTIONS = ["site", "profile", "research", "publications", "miscellaneous"];
+const PAGE = document.body.dataset.page || "academic";
+const PAGE_SECTIONS = {
+  academic: ["profile", "research", "publications"],
+  music: ["music"],
+  fun: ["fun"],
+};
+const CONTENT_SECTIONS = ["site", ...PAGE_SECTIONS[PAGE]];
 const LANGUAGE_KEY = "homepage-language";
 const THEME_KEY = "homepage-theme";
 let content;
@@ -67,13 +73,12 @@ function renderTheme() {
 }
 
 function render() {
-  const { site, profile, research, publications, miscellaneous } = Object.fromEntries(
-    CONTENT_SECTIONS.map((section) => [section, content[section][language]]),
-  );
+  const site = content.site[language];
+  const page = site.pages[PAGE];
 
   document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
-  document.title = site.title;
-  document.querySelector('meta[name="description"]').content = site.description;
+  document.title = `${site.brand} · ${page.title}`;
+  document.querySelector('meta[name="description"]').content = page.description;
   element("brand").setAttribute("aria-label", site.brand);
   for (const [id, key] of Object.entries({
     "skip-link": "skipLink", footer: "footer", "back-to-top": "backToTop",
@@ -81,6 +86,12 @@ function render() {
     setText(id, site[key]);
   }
   element("navigation").setAttribute("aria-label", site.navigationLabel);
+  document.querySelectorAll("[data-page-link]").forEach((link) => {
+    const pageId = link.dataset.pageLink;
+    link.textContent = site.pages[pageId].label;
+    if (pageId === PAGE) link.setAttribute("aria-current", "page");
+    else link.removeAttribute("aria-current");
+  });
 
   const toggle = element("language-toggle");
   toggle.textContent = site.languageButtonText;
@@ -88,7 +99,15 @@ function render() {
   toggle.setAttribute("aria-label", site.languageButtonLabel);
   renderTheme();
 
-  setText("nav-profile", profile.title);
+  if (PAGE === "academic") renderAcademic();
+  else renderProjectPage();
+}
+
+function renderAcademic() {
+  const profile = content.profile[language];
+  const research = content.research[language];
+  const publications = content.publications[language];
+
   const nameParts = profile.name.match(/^(.+?)\s*([（(].+[）)])$/);
   const nameHeading = element("profile-name");
   nameHeading.replaceChildren(createElement("span", "name-primary", nameParts ? nameParts[1] : profile.name));
@@ -103,9 +122,8 @@ function render() {
   renderParagraphs("contact-details", profile.contact.details);
   renderLinks(element("contact-links"), profile.contact.links);
 
-  for (const [key, section] of Object.entries({ research, publications, miscellaneous })) {
+  for (const [key, section] of Object.entries({ research, publications })) {
     setText(`${key}-title`, section.title);
-    setText(`nav-${key}`, section.title);
   }
 
   renderParagraphs("research-paragraphs", research.paragraphs);
@@ -141,9 +159,17 @@ function render() {
       return item;
     }),
   );
+}
 
-  renderParagraphs("miscellaneous-paragraphs", miscellaneous.paragraphs);
-  renderLinks(element("miscellaneous-links"), miscellaneous.links);
+function renderProjectPage() {
+  const page = content[PAGE][language];
+  setText("page-title", page.title);
+  renderParagraphs("page-paragraphs", page.paragraphs);
+  renderLinks(element("page-links"), page.links);
+  if (PAGE === "music") {
+    setText("album-title", page.album.title);
+    setText("album-status", page.album.status);
+  }
 }
 
 element("language-toggle").addEventListener("click", () => {
@@ -164,6 +190,18 @@ element("theme-toggle").addEventListener("click", () => {
   } catch {
     // Keep the selected theme for this visit when storage is unavailable.
   }
+});
+
+// A page restored by Back/Forward should use the latest site-wide preferences.
+window.addEventListener("pageshow", ({ persisted }) => {
+  if (!persisted || !content) return;
+  try {
+    language = localStorage.getItem(LANGUAGE_KEY) === "zh" ? "zh" : "en";
+    theme = localStorage.getItem(THEME_KEY) === "night" ? "night" : "day";
+  } catch {
+    // Keep this page's preferences when storage is unavailable.
+  }
+  render();
 });
 
 async function init() {
@@ -190,4 +228,9 @@ async function init() {
   }
 }
 
-init();
+// Keep links to the former music section working.
+if (PAGE === "academic" && location.hash === "#miscellaneous") {
+  location.replace("./music.html");
+} else {
+  init();
+}

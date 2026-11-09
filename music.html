@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" data-theme="day">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#ca9358" />
+    <script>
+      (() => {
+        try {
+          if (localStorage.getItem("homepage-theme") !== "night") return;
+          document.documentElement.dataset.theme = "night";
+          document.documentElement.style.colorScheme = "dark";
+          document.querySelector('meta[name="color-scheme"]').content = "dark";
+          document.querySelector('meta[name="theme-color"]').content = "#25243d";
+        } catch {
+          // Keep the default day theme when storage is unavailable.
+        }
+      })();
+    </script>
+    <title>ForestWarbler in the Afterglow · Music</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./assets/main.js" defer></script>
+    <noscript><style>#loading { display: none; }</style></noscript>
+  </head>
+  <body data-page="music">
+    <div id="loading" class="loading" role="status">Loading… / 正在加载</div>
+    <div id="load-error" class="loading" role="alert" hidden>
+      <p>Could not load the content. Please refresh to try again.</p>
+      <p>内容加载失败，请刷新重试。</p>
+    </div>
+    <noscript>
+      <p class="loading">Please enable JavaScript to view this page.<br />请启用 JavaScript 查看主页。</p>
+    </noscript>
+
+    <div id="page" hidden>
+      <a id="skip-link" class="skip-link" href="#main"></a>
+      <div class="container">
+        <header class="site-header">
+          <a id="brand" class="brand" href="./index.html" aria-label="ForestWarbler in the Afterglow">
+            <svg class="wordmark" viewBox="2.6 0 1200 110" aria-hidden="true" focusable="false">
+              <use href="./assets/wordmark.svg#wordmark"/>
+              <use class="brand-glow" href="./assets/wordmark.svg#wordmark-glow"/>
+            </svg>
+          </a>
+          <nav id="navigation" aria-label="Main navigation">
+            <a data-page-link="academic" href="./index.html">Academic</a>
+            <a data-page-link="music" href="./music.html">Music</a>
+            <a data-page-link="fun" href="./fun.html">Side Quests</a>
+          </nav>
+          <div class="header-controls">
+            <button id="language-toggle" class="header-button language-toggle" type="button"></button>
+            <button id="theme-toggle" class="header-button theme-toggle" type="button" aria-pressed="false"></button>
+          </div>
+        </header>
+
+        <main id="main" tabindex="-1">
+          <section class="section page-intro" aria-labelledby="page-title">
+            <h1 id="page-title">Music</h1>
+            <div id="page-paragraphs" class="prose"></div>
+            <ul id="page-links" class="inline-links" role="list"></ul>
+          </section>
+          <section class="section album" aria-labelledby="album-title">
+            <h2 id="album-title" class="album-title">pinned memory</h2>
+            <p id="album-status" class="album-status"></p>
+          </section>
+        </main>
+        <footer class="site-footer">
+          <p id="footer"></p>
+          <a class="back-to-top" href="#main" id="back-to-top"></a>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

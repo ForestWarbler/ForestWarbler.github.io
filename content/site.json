@@ -1,32 +1,74 @@
 {
   "zh": {
-    "title": "ForestWarbler in the Afterglow · 学术主页",
-    "description": "ForestWarbler 的学术主页：个人介绍、研究方向、论文发表与其他信息。",
     "brand": "ForestWarbler in the Afterglow",
     "navigationLabel": "主导航",
     "languageButtonText": "中文",
     "languageButtonLabel": "当前语言为中文，点击切换到英文",
     "themeButtons": {
-      "day": { "text": "日间", "label": "当前为日间模式，点击切换到夜间模式" },
-      "night": { "text": "夜间", "label": "当前为夜间模式，点击切换到日间模式" }
+      "day": {
+        "text": "日间",
+        "label": "当前为日间模式，点击切换到夜间模式"
+      },
+      "night": {
+        "text": "夜间",
+        "label": "当前为夜间模式，点击切换到日间模式"
+      }
     },
     "skipLink": "跳到正文",
     "backToTop": "回到顶部 ↑",
-    "footer": "© ForestWarbler"
+    "footer": "© ForestWarbler",
+    "pages": {
+      "academic": {
+        "label": "学术",
+        "title": "学术主页",
+        "description": "ForestWarbler 的学术主页：个人介绍、研究方向与论文发表。"
+      },
+      "music": {
+        "label": "音乐",
+        "title": "音乐",
+        "description": "ForestWarbler 的音乐与专辑。"
+      },
+      "fun": {
+        "label": "支线任务",
+        "title": "支线任务",
+        "description": "ForestWarbler 的其他项目。"
+      }
+    }
   },
   "en": {
-    "title": "ForestWarbler in the Afterglow · Academic homepage",
-    "description": "ForestWarbler's academic homepage: biography, research, publications, and other information.",
     "brand": "ForestWarbler in the Afterglow",
     "navigationLabel": "Main navigation",
     "languageButtonText": "English",
     "languageButtonLabel": "Current language: English. Switch to Chinese.",
     "themeButtons": {
-      "day": { "text": "Day", "label": "Current mode: Day. Switch to night mode." },
-      "night": { "text": "Night", "label": "Current mode: Night. Switch to day mode." }
+      "day": {
+        "text": "Day",
+        "label": "Current mode: Day. Switch to night mode."
+      },
+      "night": {
+        "text": "Night",
+        "label": "Current mode: Night. Switch to day mode."
+      }
     },
     "skipLink": "Skip to content",
     "backToTop": "Back to top ↑",
-    "footer": "© ForestWarbler"
+    "footer": "© ForestWarbler",
+    "pages": {
+      "academic": {
+        "label": "Academic",
+        "title": "Academic homepage",
+        "description": "ForestWarbler's academic homepage: biography, research, and publications."
+      },
+      "music": {
+        "label": "Music",
+        "title": "Music",
+        "description": "Music and albums by ForestWarbler."
+      },
+      "fun": {
+        "label": "Side Quests",
+        "title": "Side Quests",
+        "description": "Other projects by ForestWarbler."
+      }
+    }
   }
 }

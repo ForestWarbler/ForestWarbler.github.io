@@ -1,0 +1,24 @@
+{
+  "zh": {
+    "title": "音乐",
+    "paragraphs": [
+      "我非常喜欢音乐，听音乐，做音乐……"
+    ],
+    "links": [],
+    "album": {
+      "title": "pinned memory",
+      "status": "其实，一张新专辑已经在制作中了！"
+    }
+  },
+  "en": {
+    "title": "Music",
+    "paragraphs": [
+      "I love music, whether I'm listening to it or making it."
+    ],
+    "links": [],
+    "album": {
+      "title": "pinned memory",
+      "status": "Actually, there is a new album in the works!"
+    }
+  }
+}
